@@ -25,13 +25,17 @@ Powerbar.prototype._request = function (path, state) {
 };
 
 Powerbar.prototype.groupOn = function (group) {
+  this._request('/group/' + group, 'On');
 };
 
 Powerbar.prototype.groupOff = function (group) {
+  this._request('/group/' + group, 'Off');
 };
 
-Powerbar.prototype.socketOn = function (socket) {
+Powerbar.prototype.socketOn = function (bar, socketNumber) {
+  this._request('/' + bar + '/' + socketNumber, 'On');
 };
 
-Powerbar.prototype.socketOff = function (socket) {
+Powerbar.prototype.socketOff = function (bar, socketNumber) {
+  this._request('/' + bar + '/' + socketNumber, 'Off');
 };
