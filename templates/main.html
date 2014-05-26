@@ -1,34 +1,31 @@
-<html><head>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Powerbar</title>
+  </head>
+  <body>
+    <h1> Bars </h1>
+    {% for bar in bars %}
+    <h2> {{ bar.name }} </h2>
+      {% for socket in bar.sockets %}
+      <p> {{ socket }} </p>
+      <pre> http://powerbar.ti:5000/{{ bar.name}}/{{socket.num}} </pre>
+      {% endfor %}
+    {% endfor %}
 
-<title> Powerbar </title>
+    <h1> Groups </h1>
+    {% for group in groups %}
+    <p> {{ group }} ({{ groups[group] }}) </p>
+    <pre> http://powerbar.ti:5000/group/{{ group }} </pre>
 
-<head><body>
+    {% endfor %}
 
-<h1> Bars </h1>
-{% for bar in bars %}
-<h2> {{ bar.name }} </h2>
-  {% for socket in bar.sockets %}
-  <p> {{ socket }} </p>
-  <pre> http://powerbar.ti:5000/{{ bar.name}}/{{socket.num}} </pre>
-  {% endfor %}
-{% endfor %}
+    <h1> Presets </h1>
 
-<h1> Groups </h1>
-{% for group in groups %}
-<p> {{ group }} ({{ groups[group] }}) </p>
-<pre> http://powerbar.ti:5000/group/{{ group }} </pre>
+    {% for preset in presets %}
+    <p> {{ preset }} </p>
+    <pre> http://powerbar.ti:5000/preset/{{ preset }}
 
-{% endfor %}
-
-<h1> Presets </h1>
-
-{% for preset in presets %}
-<p> {{ preset }} </p>
-<pre> http://powerbar.ti:5000/preset/{{ preset }}
-
-{% endfor %}
-
-
-</body><html>
-
-
+    {% endfor %}
+  </body>
+<html>
